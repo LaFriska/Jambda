@@ -37,3 +37,5 @@ build/
 ### Mac OS ###
 .DS_Store
 /.idea/
+/src/main/java/com/friska/Test.java
+/src/main/java/com/friska/Main.java
