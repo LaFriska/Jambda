@@ -1,20 +1,33 @@
-package tokens;
+package com.friska.tokens;
 
 import org.jetbrains.annotations.NotNull;
 
+import static com.friska.Util.*;
 public class Lambda extends Term{
 
     public final Variable input;
     public final Term body;
 
-    public Lambda(Variable input, Term body){
+    public Lambda(@NotNull Variable input, @NotNull Term body){
         this.input = input;
         this.body = body;
     }
 
+    public Lambda(@NotNull String var, @NotNull Term body){
+        this(new Variable(var), body);
+    }
+
+    public Lambda(@NotNull Variable input, @NotNull String var){
+        this(input, new Variable(var));
+    }
+
+    public Lambda(@NotNull String inputVar, @NotNull String var){
+        this(new Variable(inputVar), new Variable(var));
+    }
+
     @Override
     public String parseString() {
-        return null;
+        return LAM + input.parseString() + '.' + body.parseString();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package tokens;
+package com.friska.tokens;
 
 import org.jetbrains.annotations.NotNull;
 
