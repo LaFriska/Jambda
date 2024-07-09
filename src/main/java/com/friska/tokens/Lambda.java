@@ -45,6 +45,11 @@ public class Lambda extends Term{
         return s;
     }
 
+    @Override
+    public Term replaceVariables(@NotNull String oldVar, @NotNull String newVar) {
+        return new Lambda((Variable) input.replaceVariables(oldVar, newVar), body.replaceVariables(oldVar, newVar));
+    }
+
     public Variable getInput() {
         return input;
     }

@@ -53,6 +53,11 @@ public class Application extends Term{
         return s;
     }
 
+    @Override
+    public Term replaceVariables(@NotNull String oldVar, @NotNull String newVar) {
+        return new Application(leftTerm.replaceVariables(oldVar, newVar), rightTerm.replaceVariables(oldVar, newVar));
+    }
+
     public Term getLeftTerm() {
         return leftTerm;
     }

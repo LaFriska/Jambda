@@ -30,6 +30,12 @@ public class Variable extends Term{
         return s;
     }
 
+    @Override
+    public Term replaceVariables(@NotNull String oldVar, @NotNull String newVar) {
+        if(this.name.equals(oldVar)) return new Variable(newVar);
+        else return this;
+    }
+
     public String getName() {
         return name;
     }
