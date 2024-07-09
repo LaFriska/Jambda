@@ -37,7 +37,7 @@ public class Application extends Term{
         if(rightTerm instanceof Lambda) rightString = wrap(rightTerm.parseString());
         else if(rightTerm instanceof Application) rightString = wrap(rightTerm.parseString());
         else rightString = rightTerm.parseString();
-        return leftString + rightString;
+        return leftString + ' ' + rightString;
     }
 
     @Override

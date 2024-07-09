@@ -29,7 +29,7 @@ public class Lambda extends Term{
 
     @Override
     public String parseString() {
-        return LAM + input.parseString() + '.' + body.parseString();
+        return LAM + input.parseString() + "." + body.parseString();
     }
 
     @Override
