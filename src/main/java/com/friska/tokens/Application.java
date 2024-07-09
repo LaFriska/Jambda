@@ -2,6 +2,8 @@ package com.friska.tokens;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+
 import static com.friska.Util.*;
 
 public class Application extends Term{
@@ -42,6 +44,13 @@ public class Application extends Term{
     public boolean equals(@NotNull Term t) {
         if(!(t instanceof Application)) return false;
         return ((Application) t).getLeftTerm().equals(leftTerm) && ((Application) t).getRightTerm().equals(rightTerm);
+    }
+
+    @Override
+    public HashSet<String> freeVariables() {
+        HashSet<String> s = new HashSet<>(leftTerm.freeVariables());
+        s.addAll(rightTerm.freeVariables());
+        return s;
     }
 
     public Term getLeftTerm() {
