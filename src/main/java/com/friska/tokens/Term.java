@@ -22,4 +22,21 @@ public abstract class Term {
     public String toString() {
         return parseString();
     }
+
+    /**
+     * Generates a variable name similar to the input,
+     * that is not a free variable in this term.
+     * */
+    public String generateFreshVariable(String var){
+        return genFresh(freeVariables(), var);
+    }
+
+    private String genFresh(HashSet<String> fv, String var){
+        if(!fv.contains(var)){
+            return var;
+        }else{
+            return genFresh(fv, var + "'");
+        }
+    }
+
 }
