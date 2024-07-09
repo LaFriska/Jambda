@@ -1,10 +1,18 @@
 package com.friska.tokens;
 
+import com.friska.Util;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
 
 public class Variable extends Term{
+
+    /**
+     * A list of forbidden characters
+     * */
+    public static char[] FORBIDDEN = {
+            '(', ')', ' ', Util.LAM, '\\', '\n', '\r', '.'
+    };
 
     private String name;
 

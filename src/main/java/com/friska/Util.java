@@ -8,4 +8,11 @@ public class Util {
         return "(" + s + ")";
     }
 
+    public static boolean matchChar(String str, char[] chars){
+        for(char c : chars){
+            if(str.contains(String.valueOf(c))) return true;
+        }
+        return false;
+    }
+
 }
