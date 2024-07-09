@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 public class Variable extends Term{
 
-    private final String name;
+    private String name;
 
     public Variable(@NotNull String name){
         this.name = name;
@@ -32,5 +32,9 @@ public class Variable extends Term{
 
     public String getName() {
         return name;
+    }
+
+    public void rename(String newName){
+        this.name = newName;
     }
 }
