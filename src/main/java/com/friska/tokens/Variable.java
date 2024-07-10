@@ -1,5 +1,6 @@
 package com.friska.tokens;
 
+import com.friska.InvalidVariableException;
 import com.friska.Util;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,6 +18,7 @@ public class Variable extends Term{
     private String name;
 
     public Variable(@NotNull String name){
+        if(Util.matchChars(name, FORBIDDEN)) throw new InvalidVariableException("Variable name contains illegal characters.");
         this.name = name;
     }
 
