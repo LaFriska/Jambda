@@ -2,7 +2,10 @@ package com.friska.tokenizer;
 
 import com.friska.Util;
 import com.friska.tokens.Term;
+import com.friska.tokens.Variable;
 import org.jetbrains.annotations.NotNull;
+
+import static com.friska.Util.*;
 
 public class Tokenizer {
 
@@ -19,6 +22,13 @@ public class Tokenizer {
      * */
     private static String toLambda(@NotNull String exp) {
         return exp.replace('\\', Util.LAM);
+    }
+
+    /**
+     * Checks if a Lambda expression is a single variable.
+     * */
+    private static boolean isVariable(@NotNull String exp){
+        return !matchChars(exp, Variable.FORBIDDEN);
     }
 
 }

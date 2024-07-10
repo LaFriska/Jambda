@@ -8,7 +8,7 @@ public class Util {
         return "(" + s + ")";
     }
 
-    public static boolean matchChar(String str, char[] chars){
+    public static boolean matchChars(String str, char[] chars){
         for(char c : chars){
             if(str.contains(String.valueOf(c))) return true;
         }
