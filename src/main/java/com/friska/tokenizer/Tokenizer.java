@@ -15,6 +15,7 @@ public class Tokenizer {
      * */
     public static Term tokenize(@NotNull String exp){
         exp = toLambda(exp);
+        if(exp.charAt(0) == LAM) return handleLambda(exp);
         return null;
     }
 
@@ -39,7 +40,9 @@ public class Tokenizer {
         exp = exp.substring(1); //Removes the lambda
         String inputVar = exp.split("\\.")[0];
         if(!isVariable(inputVar)) throw new InvalidSyntaxException("Input field of Lambda term: \"" + inputVar + "\" is not a variable.");
-        return new Lambda(inputVar, exp.substring(exp.indexOf(".") + 1));
+        String body = exp.substring(exp.indexOf(".") + 1);
+        if(body.isEmpty()) throw new InvalidSyntaxException("Lambda term has no body.");
+        return new Lambda(inputVar, tokenize(body));
     }
 
 }
