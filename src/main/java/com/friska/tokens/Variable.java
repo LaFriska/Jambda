@@ -11,9 +11,18 @@ public class Variable extends Term{
     /**
      * A list of forbidden characters
      * */
-    public static char[] FORBIDDEN = {
-            '(', ')', ' ', Util.LAM, '\\', '\n', '\r', '.'
-    };
+    public static HashSet<Character> FORBIDDEN = new HashSet<>();
+
+    static{
+        FORBIDDEN.add('(');
+        FORBIDDEN.add(')');
+        FORBIDDEN.add(' ');
+        FORBIDDEN.add(Util.LAM);
+        FORBIDDEN.add('\\');
+        FORBIDDEN.add('\n');
+        FORBIDDEN.add('\r');
+        FORBIDDEN.add('.');
+    }
 
     private String name;
 

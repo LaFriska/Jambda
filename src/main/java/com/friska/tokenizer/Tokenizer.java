@@ -15,7 +15,8 @@ public class Tokenizer {
      * */
     public static Term tokenize(@NotNull String exp){
         exp = toLambda(exp);
-        if(exp.charAt(0) == LAM) return handleLambda(exp);
+        if(exp.charAt(0) == LAM) return handleLambda(exp); //Expression starts with Lambda
+        else if(isVariable(exp)) return new Variable(exp); //Base case: expression is a single variable
         return null;
     }
 

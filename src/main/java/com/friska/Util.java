@@ -1,5 +1,7 @@
 package com.friska;
 
+import java.util.HashSet;
+
 public class Util {
 
     public static final char LAM = 'λ';
@@ -8,9 +10,9 @@ public class Util {
         return "(" + s + ")";
     }
 
-    public static boolean matchChars(String str, char[] chars){
-        for(char c : chars){
-            if(str.contains(String.valueOf(c))) return true;
+    public static boolean matchChars(String str, HashSet<Character> chars){
+        for(int i = 0; i < str.length(); i++){
+            if(chars.contains(str.charAt(i))) return true;
         }
         return false;
     }
