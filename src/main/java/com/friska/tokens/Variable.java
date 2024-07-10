@@ -11,23 +11,23 @@ public class Variable extends Term{
     /**
      * A list of forbidden characters
      * */
-    public static HashSet<Character> FORBIDDEN = new HashSet<>();
+    public static HashSet<Character> ILLEGALS = new HashSet<>();
 
     static{
-        FORBIDDEN.add('(');
-        FORBIDDEN.add(')');
-        FORBIDDEN.add(' ');
-        FORBIDDEN.add(Util.LAM);
-        FORBIDDEN.add('\\');
-        FORBIDDEN.add('\n');
-        FORBIDDEN.add('\r');
-        FORBIDDEN.add('.');
+        ILLEGALS.add('(');
+        ILLEGALS.add(')');
+        ILLEGALS.add(' ');
+        ILLEGALS.add(Util.LAM);
+        ILLEGALS.add('\\');
+        ILLEGALS.add('\n');
+        ILLEGALS.add('\r');
+        ILLEGALS.add('.');
     }
 
     private String name;
 
     public Variable(@NotNull String name){
-        if(Util.matchChars(name, FORBIDDEN)) throw new InvalidVariableException("Variable name contains illegal characters.");
+        if(Util.matchChars(name, ILLEGALS)) throw new InvalidVariableException("Variable name contains illegal characters.");
         this.name = name;
     }
 

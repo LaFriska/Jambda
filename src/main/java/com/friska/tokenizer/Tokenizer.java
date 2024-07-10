@@ -31,7 +31,7 @@ public class Tokenizer {
      * Checks if a Lambda expression is a single variable.
      * */
     private static boolean isVariable(@NotNull String exp){
-        return !matchChars(exp, Variable.FORBIDDEN);
+        return !matchChars(exp, Variable.ILLEGALS);
     }
 
     /**
