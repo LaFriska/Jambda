@@ -18,6 +18,8 @@ public class Tokenizer {
         if(exp.charAt(0) == LAM) return handleLambda(exp); //Expression starts with Lambda
         else if(isVariable(exp)) return new Variable(exp); //Base case: expression is a single variable
 
+        //Handles application by using TokenList. Note that TokenList recursively calls this method.
+
         return null;
     }
 
@@ -32,7 +34,7 @@ public class Tokenizer {
      * Checks if a Lambda expression is a single variable.
      * */
     private static boolean isVariable(@NotNull String exp){
-        return exp.isEmpty() || !matchChars(exp, Variable.ILLEGALS);
+        return !exp.isEmpty() && !matchChars(exp, Variable.ILLEGALS);
     }
 
     /**
