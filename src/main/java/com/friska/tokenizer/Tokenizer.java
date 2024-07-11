@@ -43,10 +43,10 @@ public class Tokenizer {
             } else if(c == ' '){
                 tokenList.add(exp.substring(startIndex, i));
                 startIndex = i + 1;
-            }
+            } //TODO brackets
         }
 
-        return null;
+        return tokenList.getCompiled();
     }
 
     /**
