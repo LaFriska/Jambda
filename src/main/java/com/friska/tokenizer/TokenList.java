@@ -28,4 +28,16 @@ public class TokenList extends ArrayList<String> {
         return current;
     }
 
+
+    /**
+     * Prevents empty strings from being added, since the algorithm written in the tokenize method
+     * may generate empty strings when multiple spaces are consecutively placed next to each other.
+     * <p>
+     * Returns false if an attempt to add an empty string is made.
+     * */
+    @Override
+    public boolean add(String s) {
+        if(!s.isEmpty()) return super.add(s);
+        return false;
+    }
 }
