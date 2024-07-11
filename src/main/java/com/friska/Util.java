@@ -17,4 +17,9 @@ public class Util {
         return false;
     }
 
+    public static String removeLeadingSpace(String str){
+        if(str.charAt(0) != ' ') return str;
+        else return removeLeadingSpace(str.substring(1));
+    }
+
 }

@@ -40,6 +40,7 @@ public class Tokenizer {
             else if(c == LAM){
                 tokenList.add(exp.substring(startIndex, i));
                 tokenList.add(exp.substring(i));
+                break;
             } else if(c == ' '){
                 tokenList.add(exp.substring(startIndex, i));
                 startIndex = i + 1;
@@ -70,7 +71,7 @@ public class Tokenizer {
         exp = exp.substring(1); //Removes the lambda
         String inputVar = exp.split("\\.")[0];
         if(!isVariable(inputVar)) throw new InvalidSyntaxException("Input field of Lambda term: \"" + inputVar + "\" is not a variable.");
-        String body = exp.substring(exp.indexOf(".") + 1);
+        String body = removeLeadingSpace(exp.substring(exp.indexOf(".") + 1));
         if(body.isEmpty()) throw new InvalidSyntaxException("Lambda term has no body.");
         return new Lambda(inputVar, tokenize(body));
     }
