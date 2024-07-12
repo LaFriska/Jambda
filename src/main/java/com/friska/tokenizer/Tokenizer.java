@@ -39,14 +39,20 @@ public class Tokenizer {
             if (UNEXPECTED_CHARS.contains(c)) throw new UnexpectedCharacterException(c, exp);
             else if (c == LAM) {
                 tokenList.add(exp.substring(startIndex, i));
-                tokenList.add(exp.substring(i));
+                startIndex = i;
                 break;
             } else if (c == ' ') {
                 tokenList.add(exp.substring(startIndex, i));
                 startIndex = i + 1;
-            } //TODO brackets
+            } else if(c == '('){
+                tokenList.add(exp.substring(startIndex, i));
+                int closingIndex = getClosingIndex(exp, i);
+                tokenList.add(exp.substring(i + 1, closingIndex));
+                i = closingIndex;
+                startIndex = i + 1;
+            }
         }
-
+        tokenList.add(exp.substring(startIndex));
         return tokenList.getCompiled();
     }
 
