@@ -17,9 +17,15 @@ public class Util {
         return false;
     }
 
-    public static String removeLeadingSpace(String str){
-        if(str.charAt(0) != ' ') return str;
-        else return removeLeadingSpace(str.substring(1));
+    public static String removeSurroundingSpace(String str){
+        if(str.isEmpty()) return str;
+        int last = str.length()-1;
+        int start = 0;
+        int end = str.length();
+        if(str.charAt(0) != ' ' && str.charAt(last) != ' ') return str;
+        if(str.charAt(0) == ' ') start = 1;
+        if(str.charAt(last) == ' ') end = last;
+        return removeSurroundingSpace(str.substring(start, end));
     }
 
 }

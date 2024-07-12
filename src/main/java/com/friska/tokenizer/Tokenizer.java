@@ -75,10 +75,10 @@ public class Tokenizer {
      */
     private static Term handleLambda(@NotNull String exp) {
         exp = exp.substring(1); //Removes the lambda
-        String inputVar = exp.split("\\.")[0];
+        String inputVar = removeSurroundingSpace(exp.split("\\.")[0]);
         if (!isVariable(inputVar))
             throw new InvalidSyntaxException("Input field of Lambda term: \"" + inputVar + "\" is not a variable.");
-        String body = removeLeadingSpace(exp.substring(exp.indexOf(".") + 1));
+        String body = removeSurroundingSpace(exp.substring(exp.indexOf(".") + 1));
         if (body.isEmpty()) throw new InvalidSyntaxException("Lambda term has no body.");
         return new Lambda(inputVar, tokenize(body));
     }
