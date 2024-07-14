@@ -39,3 +39,4 @@ build/
 /.idea/
 /src/main/java/com/friska/Test.java
 /src/main/java/com/friska/Main.java
+/src/main/java/com/friska/Lambda.hs
