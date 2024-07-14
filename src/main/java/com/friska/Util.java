@@ -1,5 +1,7 @@
 package com.friska;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashSet;
 
 public class Util {
@@ -26,6 +28,14 @@ public class Util {
         if(str.charAt(0) == ' ') start = 1;
         if(str.charAt(last) == ' ') end = last;
         return removeSurroundingSpace(str.substring(start, end));
+    }
+
+    /**
+     * Given a set of variables, and a variable name, generates a similar variable name that is not in the set.
+     * */
+    public static String genFresh(@NotNull HashSet<String> fv, @NotNull String var){
+        if(!fv.contains(var)) return var;
+        else return genFresh(fv, var + "'");
     }
 
 }

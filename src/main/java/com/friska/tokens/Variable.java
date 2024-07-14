@@ -55,11 +55,28 @@ public class Variable extends Term{
         else return this;
     }
 
+    @Override
+    public Term substitute(@NotNull String var, @NotNull Term term) {
+        if(this.name.equals(var)) return term;
+        else return this;
+    }
+
     public String getName() {
         return name;
     }
 
+    @Deprecated
     public void rename(String newName){
         this.name = newName;
+    }
+
+
+    /**
+     * Conveniently defines equivalence between Variable instances and Strings.
+     * */
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof String) return this.getName().equals(obj);
+        return super.equals(obj);
     }
 }

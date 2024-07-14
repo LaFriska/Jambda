@@ -58,6 +58,11 @@ public class Application extends Term{
         return new Application(leftTerm.replaceVariables(oldVar, newVar), rightTerm.replaceVariables(oldVar, newVar));
     }
 
+    @Override
+    public Term substitute(@NotNull String var, @NotNull Term term) {
+        return new Application(leftTerm.substitute(var, term), rightTerm.substitute(var, term));
+    }
+
     public Term getLeftTerm() {
         return leftTerm;
     }

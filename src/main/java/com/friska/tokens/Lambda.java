@@ -1,5 +1,6 @@
 package com.friska.tokens;
 
+import com.friska.Util;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashSet;
@@ -48,6 +49,16 @@ public class Lambda extends Term{
     @Override
     public Term replaceVariables(@NotNull String oldVar, @NotNull String newVar) {
         return new Lambda((Variable) input.replaceVariables(oldVar, newVar), body.replaceVariables(oldVar, newVar));
+    }
+
+    @Override
+    public Term substitute(@NotNull String var, @NotNull Term term) {
+        HashSet<String> freeVars = term.freeVariables(); //TODO fix
+        if(input.equals(var) || freeVars.contains(input.getName())){
+            String newVar = Util.genFresh(new Application(body, term).freeVariables(), input.getName());
+            return new Lambda(newVar, body.replaceVariables(input.getName(), newVar)).substitute(var, term);
+        }
+        return new Lambda(input, body.substitute(var, term));
     }
 
     public Variable getInput() {
