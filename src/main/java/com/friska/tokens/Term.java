@@ -45,4 +45,8 @@ public abstract class Term {
      * */
     public abstract Term replaceVariables(@NotNull String oldVar, @NotNull String newVar);
 
+    public boolean isCombinator(){
+        return freeVariables().isEmpty();
+    }
+
 }
