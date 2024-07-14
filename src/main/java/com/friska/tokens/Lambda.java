@@ -53,7 +53,7 @@ public class Lambda extends Term{
 
     @Override
     public Term substitute(@NotNull String var, @NotNull Term term) {
-        HashSet<String> freeVars = term.freeVariables(); //TODO fix
+        HashSet<String> freeVars = term.freeVariables();
         if(input.equals(var) || freeVars.contains(input.getName())){
             String newVar = Util.genFresh(new Application(body, term).freeVariables(), input.getName());
             return new Lambda(newVar, body.replaceVariables(input.getName(), newVar)).substitute(var, term);
